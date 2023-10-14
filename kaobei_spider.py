@@ -10,10 +10,6 @@ from selenium import webdriver
 import os
 
 
-headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36'}
-Lock = threading.Lock()
-
-
 def download(src, j, page):
     image_name = str(page) + '_' + str(j) + '_' + src[72:85] + '.webp'
     image_path = os.path.join('kaobei_images', image_name)
@@ -114,6 +110,8 @@ def main():
     print(f"总共下载{page}章")
 
 
+headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36'}
+Lock = threading.Lock()
 # 检查image目录是否存在,不存在则创建
 if not os.path.exists('kaobei_images'):
     os.makedirs('kaobei_images')
