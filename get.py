@@ -1,3 +1,4 @@
+import time
 from threading import Thread
 from download import *
 import threading
@@ -16,6 +17,7 @@ def get_downurl(soup, page):
             t = Thread(target=download, args=(temp, j, page), name=f'{page} + {str(j)}')
             t.start()
             Lock.release()
+    # time.sleep(1)
     return j
 
 

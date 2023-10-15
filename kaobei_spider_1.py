@@ -19,7 +19,6 @@ def down(src, count):
     soup = BeautifulSoup(html, "html.parser")
     temp_tr = soup.find('span', class_='comicCount')
     temp = get_downurl(soup, page)
-    # time.sleep(1)
     print(int(temp_tr.text), temp)
     if int(temp_tr.text) == temp:
         success.add(page)
