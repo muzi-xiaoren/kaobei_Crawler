@@ -14,7 +14,7 @@ def down(src, count):
     time.sleep(1)
     for i in range(count):
         driver.find_element(By.TAG_NAME, 'body').send_keys(Keys.SPACE)
-        time.sleep(0.2)
+        time.sleep(0.1)
     html = driver.page_source
     soup = BeautifulSoup(html, "html.parser")
     temp_tr = soup.find('span', class_='comicCount')
