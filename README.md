@@ -5,6 +5,8 @@
 
 将url传入get.py中使用多线程编程加快下载速率
 
+拷贝主页为<https://www.mangacopy.com/>
+
 下面是具体函数及使用方法。
 
 download.py 和 get.py 是方法函数，不需要修改。pic是md图片存放处。

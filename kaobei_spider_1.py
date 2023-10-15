@@ -1,4 +1,3 @@
-import time
 from selenium.webdriver.common.keys import Keys
 from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
@@ -53,7 +52,7 @@ if __name__ == "__main__":
     driver.execute_script("arguments[0].click()", element)
     time.sleep(1)
     print("访问拷贝页面中,.....")
-    driver.get("https://www.mangacopy.com/comic/tiancaimonvmeimole")  # 此处修改页面url,readme可能有时候忘记修改
+    driver.get("https://www.mangacopy.com/comic/zangsongdefulilian")  # 此处修改页面url,readme可能有时候忘记修改
     time.sleep(1)
     html = driver.page_source  # 获取当前页面HTML
     soup = BeautifulSoup(html, "html.parser")  # 用BeautifulSoup解析

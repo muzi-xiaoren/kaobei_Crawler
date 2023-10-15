@@ -17,7 +17,7 @@ def get_downurl(soup, page):
             t = Thread(target=download, args=(temp, j, page), name=f'{page} + {str(j)}')
             t.start()
             Lock.release()
-    time.sleep(0.1)
+    time.sleep(1)
     return j
 
 
