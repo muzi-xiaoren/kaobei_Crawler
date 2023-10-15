@@ -6,7 +6,7 @@ headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/
 
 
 def download(src, j, page):
-    image_name = str(page) + '_' + str(j) + '_' + src[72:85] + '.webp'
+    image_name = str(page) + '_' + str(j) + '_' + src[36:40] + '.webp'
     image_path = os.path.join('kaobei_images', image_name)
 
     if os.path.exists(image_path):
