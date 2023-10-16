@@ -38,23 +38,25 @@ if __name__ == "__main__":
     chrome_options.debugger_address = "127.0.0.1:9222"
     driver = webdriver.Chrome(options=chrome_options)
 
-    # 检查image目录是否存在,不存在则创建
-    if not os.path.exists('kaobei_images'):
-        os.makedirs('kaobei_images')
-
     try:
-        driver.get("https://www.mangacopy.com/comic/tiancaimonvmeimole")  # 此处修改页面url
+        driver.get("https://www.mangacopy.com/comic/wojiapengtaibianchenglerenleizhejianshi")  # 此处修改页面url
     except TimeoutException:
         driver.execute_script('window.stop()')
 
     time.sleep(1)
     html = driver.page_source  # 获取当前页面HTML
     soup = BeautifulSoup(html, "html.parser")  # 用BeautifulSoup解析
+    title = soup.find('h6').text
+    # 检查image目录是否存在,不存在则创建
+    if not os.path.exists(title):
+        os.makedirs(title)
+
     soup = soup.find(name='div', attrs={"id": "default全部"})  # print(srcs, len(srcs), sep='/n')    # 查找元素等操作show
     srcs = soup.find_all('a')
     page_all, src_list = get_page(srcs)
     success = set()
     page = 0
+    time.sleep(100)
 
     for src in src_list:
         count = 4
@@ -63,3 +65,4 @@ if __name__ == "__main__":
 
     driver.quit()
     print(f"页面读取{page_all}章，总共下载{page}章")
+    exit()

@@ -34,9 +34,6 @@ if __name__ == "__main__":
     options = Options()
     options.add_argument("window-position=660,0")
     driver = webdriver.Chrome(options=options)
-    # 检查image目录是否存在,不存在则创建
-    if not os.path.exists('kaobei_images'):
-        os.makedirs('kaobei_images')
 
     try:
         driver.get('https://www.mangacopy.com/web/login/loginByAccount?url=person%2Fhome')
@@ -52,10 +49,14 @@ if __name__ == "__main__":
     driver.execute_script("arguments[0].click()", element)
     time.sleep(1)
     print("访问拷贝页面中,.....")
-    driver.get("https://www.mangacopy.com/comic/zangsongdefulilian")  # 此处修改页面url,readme可能有时候忘记修改
+    driver.get("https://www.mangacopy.com/comic/wojiapengtaibianchenglerenleizhejianshi")  # 此处修改页面url,readme可能有时候忘记修改
     time.sleep(1)
     html = driver.page_source  # 获取当前页面HTML
     soup = BeautifulSoup(html, "html.parser")  # 用BeautifulSoup解析
+    title = soup.find('h6').text
+    # 检查image目录是否存在,不存在则创建
+    if not os.path.exists(title):
+        os.makedirs(title)
     soup = soup.find(name='div', attrs={"id": "default全部"})  # print(srcs, len(srcs), sep='/n')    # 查找元素等操作show
     srcs = soup.find_all('a')
     page_all, src_list = get_page(srcs)
