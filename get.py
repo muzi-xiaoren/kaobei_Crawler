@@ -6,7 +6,7 @@ import threading
 Lock = threading.Lock()
 
 
-def get_downurl(soup, page):
+def get_downurl(soup, page, title):
     j = 0
     srcs = soup.find_all('img')
     for src in srcs:
@@ -14,10 +14,10 @@ def get_downurl(soup, page):
         if temp:
             Lock.acquire()
             j += 1
-            t = Thread(target=download, args=(temp, j, page), name=f'{page} + {str(j)}')
+            t = Thread(target=download, args=(temp, j, page, title), name=f'{page} + {str(j)}')
             t.start()
             Lock.release()
-    time.sleep(1)
+    # time.sleep(1)
     return j
 
 

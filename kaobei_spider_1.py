@@ -8,7 +8,7 @@ from get import *
 import os
 
 
-def down(src, count):
+def down(src, count, title):
     driver.get(src)
     time.sleep(1)
     for i in range(count):
@@ -17,14 +17,14 @@ def down(src, count):
     html = driver.page_source
     soup = BeautifulSoup(html, "html.parser")
     temp_tr = soup.find('span', class_='comicCount')
-    temp = get_downurl(soup, page)
+    temp = get_downurl(soup, page, title)
     print(int(temp_tr.text), temp)
     if int(temp_tr.text) == temp:
         success.add(page)
-        print(f'章{page} download successfully       {success}')
+        print(f'章{page} success {success}')
         print()
     else:
-        print(f'章{page} download failed')
+        print(f'章{page} failed')
         print()
         down(src, count * 2)
 
@@ -49,7 +49,7 @@ if __name__ == "__main__":
     driver.execute_script("arguments[0].click()", element)
     time.sleep(1)
     print("访问拷贝页面中,.....")
-    driver.get("https://www.mangacopy.com/comic/wojiapengtaibianchenglerenleizhejianshi")  # 此处修改页面url,readme可能有时候忘记修改
+    driver.get("https://www.mangacopy.com/comic/tiancaimonvmeimole")  # 此处修改页面url,readme可能有时候忘记修改
     time.sleep(1)
     html = driver.page_source  # 获取当前页面HTML
     soup = BeautifulSoup(html, "html.parser")  # 用BeautifulSoup解析
@@ -66,7 +66,7 @@ if __name__ == "__main__":
     for src in src_list:
         count = 4
         page += 1
-        down(src, count)
+        down(src, count, title)
 
     driver.quit()
     print(f"页面读取{page_all}章，总共下载{page}章")
