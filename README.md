@@ -33,11 +33,7 @@ download.py 和 get.py 是方法函数，不需要修改。pic是md图片存放�
 
 但是配置起来比较麻烦，教程见[教程](https://blog.csdn.net/beckynie1989/article/details/124262163)<https://blog.csdn.net/beckynie1989/article/details/124262163>
 
-使用前需要    打开终端输入    Chrome --remote-debugging-port=9222
-
-使用前还需要把Chrome的所有进程结束掉，如下。
-
-![](src/img2.png)
+使用前需要关闭所有浏览器页面    然后打开终端输入    Chrome --remote-debugging-port=9222
 
 建议直接使用kaobei_spider_1的账号密码登陆
 
