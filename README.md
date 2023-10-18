@@ -9,7 +9,7 @@
 
 下面是具体函数及使用方法。
 
-download.py 和 get.py 是方法函数，不需要修改。pic是md图片存放处。
+download.py 和 get.py 是一般不需要修改。pic是md图片存放处。
 
 ---
 
