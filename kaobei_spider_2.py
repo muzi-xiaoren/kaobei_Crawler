@@ -9,16 +9,19 @@ from get import *
 import os
 
 
-def down(src, count, title):
+def down(src, count, title, mode):
     driver.get(src)
     time.sleep(1)
     for i in range(count):
         driver.find_element(By.TAG_NAME, 'body').send_keys(Keys.SPACE)
-        time.sleep(0.2)
+        time.sleep(0.1)
     html = driver.page_source
     soup = BeautifulSoup(html, "html.parser")
     temp_tr = soup.find('span', class_='comicCount')
-    temp = get_downurl(soup, page, title)
+    if int(mode):
+        temp = get_downurl_sep(soup, page, title)
+    else:
+        temp = get_downurl(soup, page, title)
     print(int(temp_tr.text), temp)
     if int(temp_tr.text) == temp:
         success.add(page)
@@ -27,9 +30,14 @@ def down(src, count, title):
     else:
         print(f'章{page} failed')
         print()
-        down(src, count * 2)
+        down(src, count * 2, title, mode)
+
 
 if __name__ == "__main__":
+    mode = input('''请输入下载的模式:
+0->全部下载在同一文件夹内
+1->分文件夹进行下载
+    ''') or 0
     # 初始化
     chrome_options = Options()
     # 打开终端输入    Chrome --remote-debugging-port=9222
@@ -59,7 +67,7 @@ if __name__ == "__main__":
     for src in src_list:
         count = 4
         page += 1
-        down(src, count, title)
+        down(src, count, title, mode)
 
     driver.quit()
     print(f"页面读取{page_all}章，总共下载{page}章")
