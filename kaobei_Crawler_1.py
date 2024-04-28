@@ -36,7 +36,7 @@ if __name__ == "__main__":
     mode = input('''请输入下载的模式:
 0->全部下载在同一文件夹内
 1->分文件夹进行下载
-''') or 0
+''') or 1
     # 初始化
     options = Options()
     options.add_argument("window-position=660,0")
@@ -56,7 +56,7 @@ if __name__ == "__main__":
     driver.execute_script("arguments[0].click()", element)
     time.sleep(1)
     print("访问拷贝页面中,.....")
-    driver.get("https://www.mangacopy.com/comic/yequ1")  # 此处修改页面url
+    driver.get("https://www.mangacopy.com/comic/shejianshangdedixiacheng#")  # 此处修改页面url
     time.sleep(1)
     html = driver.page_source  # 获取当前页面HTML
     soup = BeautifulSoup(html, "html.parser")  # 用BeautifulSoup解析

@@ -13,9 +13,10 @@ pool_sema = threading.BoundedSemaphore(max_connections)  # 或使用Semaphore方
 
 def download(src, j, page, title):
     pool_sema.acquire()  # 加锁，限制线程数
-    pattern = r'\/y\/(.*?)\/'
-    result1 = re.search(pattern, src)
-    image_name = str(page) + '_' + str(j) + '_' + result1.group(1) + '.webp'
+    # pattern = r'\/y\/(.*?)\/'
+    # result1 = re.search(pattern, src)     # 防止图片链接时不时变化，取消图片命名，有需要可在此自行修改。
+    image_name = str(page) + '_' + str(j) + '.webp'
+    print(image_name)
     image_path = os.path.join(title, image_name)
 
     if os.path.exists(image_path):

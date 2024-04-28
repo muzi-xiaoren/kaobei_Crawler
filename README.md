@@ -36,16 +36,17 @@ download.py 和 get.py 是一般不需要修改。pic是md图片存放处。
 
 ## kaobei_spider_2.py
 
-### 在41行处修改漫画页面的url
+~~### 在41行处修改漫画页面的url~~
 
-使用的是本机浏览器，例如代码中的Chrome浏览器
-如果你的浏览器中已经登陆了拷贝网站，那么就可以省去登陆的步骤。
+~~使用的是本机浏览器，例如代码中的Chrome浏览器,如果你的浏览器中已经登陆了拷贝网站，那么就可以省去登陆的步骤。~~
 
-但是配置起来比较麻烦(不推荐使用,后续更新也暂不考虑此处)，教程见[教程](https://blog.csdn.net/beckynie1989/article/details/124262163)<https://blog.csdn.net/beckynie1989/article/details/124262163>
+~~但是配置起来比较麻烦(不推荐使用,后续更新也暂不考虑此处)，教程见[教程](https://blog.csdn.net/beckynie1989/article/details/124262163)<https://blog.csdn.net/beckynie1989/article/details/124262163>~~
 
-使用前需要关闭所有浏览器页面    然后打开终端输入    Chrome --remote-debugging-port=9222
+~~使用前需要关闭所有浏览器页面    然后打开终端输入    Chrome --remote-debugging-port=9222~~
 
-建议直接使用kaobei_spider_1的账号密码登陆
+~~建议直接使用kaobei_spider_1的账号密码登陆~~
+
+此文件不再更新维护，仅供参考。
 
 ---
 
@@ -61,3 +62,17 @@ download.py 和 get.py 是一般不需要修改。pic是md图片存放处。
 
 4. 文件名格式由章节数_图片顺序_url中部分字符串构成。如下所示。
 ![](src/img1.png)
+
+5. 因为每章漫画的页数不同，所以为了便于下载。可以提前修改count的值(kaober_Crawler_1第74行) 
+
+
+    页数<60时，使用默认值count=4 
+
+    页数60<i<120 ，可修改count=8
+
+    页数>200，可修改count=16
+
+
+
+
+
