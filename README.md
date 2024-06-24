@@ -1,3 +1,5 @@
+![:name](https://count.getloli.com/get/@muzi-xiaoren-kaobei_Crawler?theme=gelbooru)
+
 # kaobei_Crawler
 主要使用selenium库模拟浏览器来获取kaobei动态加载的html页面。
 
