@@ -35,10 +35,10 @@ def login(driver, username, password):
 
     time.sleep(1)
     # 查找用户名、密码输入框并输入
-    driver.find_element(By.XPATH, '//*[@id="pane-login"]/form/div[1]/div/div[1]/input').send_keys(username)
+    driver.find_element(By.XPATH, '//*[@id="pane-login"]/form/div[1]/div/div/input').send_keys(username)
     driver.find_element(By.XPATH, '//*[@id="pane-login"]/form/div[2]/div/div/input').send_keys(password)
     # 点击登录按钮
-    element = driver.find_element(By.CLASS_NAME, "el-button--danger")
+    element = driver.find_element(By.CLASS_NAME, "el-button--primary")
     driver.execute_script("arguments[0].click()", element)
     time.sleep(1)
 
@@ -99,7 +99,7 @@ def url_consumer(title, mode, q_list, end_chapter):
 def start_threads(driver, src_list, start_chapter, end_chapter, title, mode):
     page = start_chapter - 1
     q_list = queue.Queue()
-    
+    count = 4
     # 启动消费者线程
     consumer_thread = Thread(target=url_consumer, args=(title, mode, q_list, end_chapter))
     consumer_thread.start()
@@ -107,7 +107,6 @@ def start_threads(driver, src_list, start_chapter, end_chapter, title, mode):
     # 启动生产者线程
     for i in range(start_chapter - 1, end_chapter):
         src = src_list[i]
-        count = 4
         page += 1
         t = Thread(target=url_producer, args=(driver, src, count, title, page, q_list))
         t.start()
